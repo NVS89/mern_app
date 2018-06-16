@@ -5,7 +5,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 
 const common = {
     entry: {
-        app: PATHS.src
+        app: ['babel-polyfill', PATHS.src]
     },
     output: {
         path: PATHS.dist,
