@@ -4,9 +4,7 @@ import UserForm from '../components/Form/UserForm'
 export default class Page extends Component {
     render() { 
         return ( 
-            <div>
-                <UserForm />
-            </div>
+            <UserForm />
         )
     }
 }

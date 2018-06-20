@@ -1,36 +1,47 @@
 import { userConstants } from "../constants/user";
 
 export const userActions = {
-    getUsers,
-    saveUser
+    getUsersRequest,
+    getUsersSucces,
+    getUsersFailure,
+    saveUserRequest,
+    saveUserSucces,
+    saveUserFailure
 }
 
-function getUsers() {  
-    return dispatch =>{
-        dispatch(request());
-        userService.getUsers()
-            .then(
-                users => dispatch(success(users)),
-                error => dispatch(failure(error.toString()))
-            );
-
+function getUsersRequest() {  
+    return{
+        type: userConstants.GET_USERS_REQUEST
     }
-        function request() { return { type: userConstants.GET_USERS_REQUEST} }
-        function success(users) { return { type: userConstants.GET_USERS_SUCCESS, users} }
-        function failure(error) { return { type: userConstants.GET_USERS_FAILURE, error} }
 }
 
-function saveUser(user) {
-    return dispatch => {
-        dispatch(request(user));
-        userService.saveUser(user)
-            .then(
-                user => dispatch(success(user)),
-                error => dispatch(failure(error.toString()))
-            );
-
+function getUsersSucces() {
+    return {
+        type: userConstants.GET_USERS_SUCCESS
     }
-    function request(user) { return { type: userConstants.SAVE_USER_REQUEST, user }}
-    function success(user) { return { type: userConstants.SAVE_USER_SUCCESS, user }}
-    function failure(error) { return { type: userConstants.SAVE_USER_FAILURE, error }}
+}
+
+function getUsersFailure() {
+    return {
+        type: userConstants.SAVE_USER_FAILURE
+    }
+}
+
+function saveUserRequest(user) {
+    return {
+        type: userConstants.SAVE_USER_REQUEST,
+        user
+    }
+}
+
+function saveUserSucces() {
+    return {
+        type: userConstants.SAVE_USER_SUCCESS
+    }
+}
+
+function saveUserFailure() {
+    return {
+        type: userConstants.SAVE_USER_FAILURE
+    }
 }

@@ -1,9 +1,9 @@
 import {takeLatest, put, call} from 'redux-saga/effects';
 import {userConstants} from '../constants/user';
 import {userActions} from '../actions';
-import { userService } from "../services";
+import {userService} from "../services";
 
-function* getUsers () {
+function* getUsers() {
     try {
         const users = yield call(userService.getUsers);
         yield put(userActions.getUsersSucces(users));
@@ -12,11 +12,24 @@ function* getUsers () {
     }
 }
 
-function* watchGetUsers () {
+function* saveUser(user) {
+    try {
+        const users = yield call(userService.saveUser(user));
+        yield put(userActions.saveUserSucces(users));
+    } catch (error) {
+        yield put(userActions.saveUserFailure(error));
+    }
+}
+
+function* watchGetUsers() {
     yield takeLatest(userConstants.GET_USERS_REQUEST, getUsers);
+}
+function* watchSaveUser() {
+    yield takeLatest(userConstants.SAVE_USER_REQUEST, saveUser);
 }
 
 export {
-    watchGetUsers
+    watchGetUsers,
+    watchSaveUser
 }
 

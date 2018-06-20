@@ -1,0 +1,29 @@
+@import "../../variables.styl"
+
+.btn
+    display inline-block
+    padding 6px 12px
+    margin-bottom 0
+    font-size 14px
+    font-weight 600
+    line-height 1.42857143
+    text-align center
+    white-space nowrap
+    vertical-align middle
+    touch-action manipulation
+    cursor pointer
+    user-select none
+    background-image none
+    border 1px solid transparent
+    border-radius 4px
+    &[disabled]
+        opacity .5
+        cursor not-allowed
+    &.submit
+        min-width 100px
+        min-height 30px
+        background-color $button-green
+        border-color $green-border
+        margin-top 5px
+        margin-bottom 5px
+        color $defaut-text

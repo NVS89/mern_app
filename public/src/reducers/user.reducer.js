@@ -1,6 +1,13 @@
 import { userConstants } from '../constants/user';
 
-export function users(state={}, action) {
+const initialState = {
+    loading: false,
+    items: [],
+    error: [],
+    saving: false,
+}
+
+export function users(state = initialState, action) {
     switch (action.type) {
         case userConstants.GET_USERS_REQUEST:
             return{
@@ -16,7 +23,8 @@ export function users(state={}, action) {
             }
         case userConstants.SAVE_USER_REQUEST:
             return{
-                saving: true
+                saving: true,
+                user: action.user
             }
         case userConstants.SAVE_USER_SUCCESS:
             return{
@@ -25,7 +33,7 @@ export function users(state={}, action) {
         case userConstants.SAVE_USER_FAILURE:
             return{
                 items: state.items,
-                deleteError: action.error
+                error: action.error
             }
     
         default:
