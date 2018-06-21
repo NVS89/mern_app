@@ -45,7 +45,7 @@ app.use((req, res, next)=>{
     next();
 });
 
-app.route('/users')
+app.route('/user')
     .post(postUser)
     .get(getUsers);
 app.route('/users/:id')

@@ -1,11 +1,11 @@
-import axios from 'axios';
+import {transport} from '../helpers/axios';
 export const userService = {
     getUsers,
     saveUser
 }
 
 function getUsers() {
-    axios.get( '/users')
+    transport.get( '/users')
         .then(function(response) {
             return responce.data;
         })
@@ -15,7 +15,7 @@ function getUsers() {
 }
 
 function saveUser(user) {
-    axios.post('/user',{
+    transport.post('/user',{
         firstName: user.firstName,
         lastName: user.lastName,
         phone: user.phone,

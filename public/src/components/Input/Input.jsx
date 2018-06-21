@@ -12,9 +12,8 @@ export default function InputControl(props) {
     } = props;
     return(
         <div className={containerClass}>
-            <label className={labelClass} htmlFor={name}> {label} </label>
-            <input {...input} placeholder={label} type={type} />
-            {touched && (error && <span>{error}</span>)}
+            <label className={labelClass} htmlFor={name}> {label}: </label>
+            <input {...input} placeholder={label} type={type} className={`input-control${touched && error?' error':''}`} />
         </div>
     )
 }

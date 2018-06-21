@@ -44,7 +44,7 @@ function UserForm (props){
     }
     return ( 
         <div className="form-wrapper">
-            <form className="form" id="user" onSubmit={handleSubmit(submitHandler)}>
+            <form className="form" id="user" onSubmit={handleSubmit(submitHandler)} autoComplete="off">
                 <Field 
                     className="form_field" 
                     name="firstName" 
@@ -52,7 +52,7 @@ function UserForm (props){
                     type="text" 
                     placeholder="Please enter your First Name"
                     labelClass="form_label" 
-                    label="First Name: "
+                    label="First Name"
                     containerClass="field-container"
                 />
                 <Field className="form_field" 
@@ -61,7 +61,7 @@ function UserForm (props){
                     type="text" 
                     placeholder="Please enter your Last Name"
                     labelClass="form_label" 
-                    label="Last Name: "
+                    label="Last Name"
                     containerClass="field-container"
                 />
                 <Field 
@@ -71,26 +71,9 @@ function UserForm (props){
                     type="phone" 
                     placeholder="Please enter your Phone"
                     labelClass="form_label"
-                    label="Phone: "
+                    label="Phone"
                     containerClass="field-container"
                 />
-                <div className="field-container">
-                    <label className="form_label" htmlFor="gender" > Gender: </label>
-                    <Field
-                        name="gender"
-                        component={InputControl}
-                        type="radio"
-                        value="0"
-                    />{' '}
-                    Male
-                    <Field
-                        name="gender"
-                        component={InputControl}
-                        type="radio"
-                        value="1"
-                    />{' '}
-                    Female
-                </div>
                 <Field 
                     className="form_field" 
                     name="age" 
@@ -98,7 +81,7 @@ function UserForm (props){
                     type="number" 
                     placeholder="Please enter your Age"
                     labelClass="form_label"
-                    label="Age: "
+                    label="Age"
                     containerClass="field-container"
                 />
                 <div className="button-container">
