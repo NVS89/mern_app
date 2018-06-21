@@ -6,3 +6,8 @@
 
 ## To build clien side app for production 
 - npm run build
+
+## To start MongoDb server
+- at firs you need to install and setup MongoDB, 
+on the same level as the project folder or specify your own path to MongoDB server and DB folder in db_start script
+- npm run db_start

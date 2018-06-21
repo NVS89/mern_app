@@ -44,6 +44,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "api": "babel-node --inspect index.js",
     "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "db_start": "..\\MongoDB\\bin\\mongod --dbpath=D:\\development\\training_MERN\\db"
   }
 }
