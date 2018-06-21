@@ -1,14 +1,15 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import morgan from 'morgan';
 
 import User from './app/models/user';
+import config from './config/node-config'
 import {getUsers, getUser, postUser, deleteUser} from './app/routes/user';
 
 const app = express();
 const port = process.env.PORT || 8080;
-
+/*
 const options = {
     server: {
         socketOptions: {
@@ -23,14 +24,16 @@ const options = {
         }
     }
 };
+*/
+mongoose.Promise = global.Promise;
 
-// mongoose.Promise = global.Promise;
+mongoose.connect(config.db.host + config.db.port);
 
-// mongoose.connect('mongodb://localhost', options);
+const db = mongoose.connection;
 
-// const db = mongoose.connection;
-
-// db.on('error',console.error.bind(console,'connection error:'));
+db.on('connected', console.log.bind(console, 'connection success'));
+db.on('disconnected', console.log.bind(console, 'disconnect success'));
+db.on('error', console.error.bind(console,'connection error:'));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -38,8 +41,9 @@ app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/public/dist'));
 
+//enable CORS
 app.use((req, res, next)=>{
-    res.header('Access-Control-Allow-Origin','*');
+    res.header('Access-Control-Allow-Origin', config.corsOrigin);
     res.header('Access-Control-Allow-Methods','GET,POST,PUT,DELETE');
     res.header('Access-Control-Allow-Headers','Origins, X-Requested-With, Content-Type, Accept');
     next();

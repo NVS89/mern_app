@@ -19,7 +19,6 @@ function saveUser(user) {
         firstName: user.firstName,
         lastName: user.lastName,
         phone: user.phone,
-        gender: user.gender,
         age: user.age
     }).then(function(responce) {
         return responce.data;
