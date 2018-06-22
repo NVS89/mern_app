@@ -14,7 +14,7 @@ function* getUsers() {
 
 function* saveUser(action) {
     try {
-        const users = yield call(userService.saveUser(action.user));
+        const users = yield call(userService.saveUser, action.user);
         yield put(userActions.saveUserSucces(users));
     } catch (error) {
         yield put(userActions.saveUserFailure(error));

@@ -15,15 +15,17 @@ function getUsersRequest() {
     }
 }
 
-function getUsersSucces() {
+function getUsersSucces(users) {
     return {
-        type: userConstants.GET_USERS_SUCCESS
+        type: userConstants.GET_USERS_SUCCESS,
+        users: users
     }
 }
 
-function getUsersFailure() {
+function getUsersFailure(error) {
     return {
-        type: userConstants.SAVE_USER_FAILURE
+        type: userConstants.SAVE_USER_FAILURE,
+        error: error
     }
 }
 
@@ -34,9 +36,10 @@ function saveUserRequest(user) {
     }
 }
 
-function saveUserSucces() {
+function saveUserSucces(user) {
     return {
-        type: userConstants.SAVE_USER_SUCCESS
+        type: userConstants.SAVE_USER_SUCCESS,
+        user
     }
 }
 

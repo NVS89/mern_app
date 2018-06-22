@@ -1,9 +1,9 @@
 import React ,{PureComponent} from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import {InputControl} from '../Input/';
 import { Button } from '../Button';
+import { bindActionCreators } from 'redux';
 import { userActions } from '../../actions/user.actions';
 
 import './form.styl';

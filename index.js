@@ -49,10 +49,10 @@ app.use((req, res, next)=>{
     next();
 });
 
-app.route('/user')
-    .post(postUser)
+app.route('/users')
     .get(getUsers);
-app.route('/users/:id')
+app.route('/user(/:id)?')
+    .post(postUser)
     .get(getUser)
     .delete(deleteUser);
 

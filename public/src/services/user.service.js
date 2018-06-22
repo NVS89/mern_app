@@ -5,24 +5,27 @@ export const userService = {
 }
 
 function getUsers() {
-    transport.get( '/users')
-        .then(function(response) {
-            return responce.data;
+    return transport.get( '/users')
+        .then( response => {
+            return response.data;
         })
-        .catch(function(error) {
+        .catch( error => {
             return error;
-        })
+        });
 }
 
 function saveUser(user) {
-    transport.post('/user',{
+    return transport.post('/user',{
         firstName: user.firstName,
         lastName: user.lastName,
         phone: user.phone,
         age: user.age
-    }).then(function(responce) {
-        return responce.data;
-    }).catch(function(error) {
+    }).then( response => {
+        if (response.status === 200) {
+            return response.data.user;
+        }
+        return;
+    }).catch( error => {
         return error;
     });
 }

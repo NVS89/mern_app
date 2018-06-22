@@ -10,28 +10,37 @@ const initialState = {
 export function users(state = initialState, action) {
     switch (action.type) {
         case userConstants.GET_USERS_REQUEST:
-            return{
+            return {
+                ...state,
                 loading: true
             }
         case userConstants.GET_USERS_SUCCESS:
-            return{
+            return {
+                ...state,
+                loading: false,
                 items: action.users
             }
         case userConstants.GET_USERS_FAILURE:
-            return{
+            return {
+                ...state,
                 error: action.error
             }
         case userConstants.SAVE_USER_REQUEST:
-            return{
+            return {
+                ...state,
                 saving: true,
                 user: action.user
             }
         case userConstants.SAVE_USER_SUCCESS:
-            return{
-               items: {...state.items, ...action.user}
+            return {
+                ...state,
+                saving: false,
+                items: [...state.items, ...action.user]
             }
         case userConstants.SAVE_USER_FAILURE:
-            return{
+            return {
+                ...state,
+                saving: false,
                 items: state.items,
                 error: action.error
             }

@@ -22,17 +22,13 @@ const getUser = (req, res) =>{
 }
 
 const postUser = (req, res) => {
-
-    console.log('====================================')
-    console.log(req.body)
-    console.log('====================================')
     let user = Object.assign(new User(), req.body);
 
     user.save(err => {
         if (err) {
             res.send(err);
         }
-        res.json({ message: 'user created' });
+        res.json({ user:[user]});
     });
 };
 
