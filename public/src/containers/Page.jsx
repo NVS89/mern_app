@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserForm from '../components/Form/UserForm';
-import UserList from '../components/List/List';
+import UserList from '../components/List/UserList';
 
-export default class Page extends Component {
-    render() {
-        return (
-            <div className="layout">
-                <UserForm />
-                <UserList />
-            </div>
-        )
-    }
+export default function Page() {
+    return (
+        <div className="layout">
+            <UserForm />
+            <UserList />
+        </div>
+    );
 }

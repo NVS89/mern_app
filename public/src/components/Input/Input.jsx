@@ -2,18 +2,18 @@ import React from 'react';
 import './input.styl';
 
 export default function InputControl(props) {
-    const{    
+    const {
         input,
         label,
         type,
         labelClass,
         containerClass,
-        meta: { touched, error}
+        meta: { touched, error },
     } = props;
-    return(
+    return (
         <div className={containerClass}>
             <label className={labelClass} htmlFor={name}> {label}: </label>
-            <input {...input} placeholder={label} type={type} className={`input-control${touched && error?' error':''}`} />
+            <input {...input} placeholder={label} type={type} className={`input-control${touched && error ? ' error' : ''}`} />
         </div>
-    )
+    );
 }

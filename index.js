@@ -3,9 +3,13 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 
-import User from './app/models/user';
-import config from './config/node-config'
-import {getUsers, getUser, postUser, deleteUser} from './app/routes/user';
+import config from './config/node-config';
+import {
+    getUsers,
+    getUser,
+    postUser,
+    deleteUser,
+} from './app/routes/user';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -33,34 +37,34 @@ const db = mongoose.connection;
 
 db.on('connected', console.log.bind(console, 'connection success'));
 db.on('disconnected', console.log.bind(console, 'disconnect success'));
-db.on('error', console.error.bind(console,'connection error:'));
+db.on('error', console.error.bind(console, 'connection error:'));
 
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-app.use(express.static(__dirname + '/public/dist'));
+app.use(express.static(`${__dirname}/public/dist`));
 
-//enable CORS
-app.use((req, res, next)=>{
+// enable CORS
+app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', config.corsOrigin);
-    res.header('Access-Control-Allow-Methods','GET,POST,PUT,DELETE');
-    res.header('Access-Control-Allow-Headers','Origins, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Origins, X-Requested-With, Content-Type, Accept');
     next();
 });
 
 app.route('/users')
     .get(getUsers);
-app.route('/user(/:id)?')
+app.route('/user(/:uid)?')
     .post(postUser)
     .get(getUser)
     .delete(deleteUser);
 
-app.route('*').get((req, res)=>{
+app.route('*').get((req, res) => {
     res.sendFile('public/dist/index.html',
-    {
-        root: __dirname
-    });
+        {
+            root: __dirname,
+        });
 });
 
 app.listen(port);

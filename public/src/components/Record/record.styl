@@ -6,19 +6,17 @@
         padding 15px
         flex-direction column
         flex-wrap wrap
-        border 1px solid $grey-border
+        border 1px solid $border-grey
         border-radius 15px
         margin 20px
     &-row, &-header
         display flex
-        &:nth-child(2n)
-            background-color $grey-row
-
+    &-row:nth-child(odd)
+            background-color $row-grey
     &-header
         .list-cell
             cursor pointer 
     &-cell 
         width 100px  
-        margin auto
         padding 15px
         text-align center 
