@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import './button.styl';
 
 export default function Button(props) {
@@ -23,3 +23,19 @@ export default function Button(props) {
         </button>
     );
 }
+
+Button.defaultProps = {
+    className: '',
+    form: '',
+    children: {},
+    disabled: '',
+};
+
+Button.propTypes = {
+    type: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    form: PropTypes.string,
+    children: PropTypes.node,
+    onClick: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+};

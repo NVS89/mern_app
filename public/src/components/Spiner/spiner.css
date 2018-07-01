@@ -1,0 +1,131 @@
+.spiner{
+    animation: rotate 4s;
+    animation-iteration-count: infinite;
+}
+
+.spiner-container{
+    background-color: #fff;
+    width: 400px;
+    height: 400px;
+    transform: rotate(-45deg);
+    border-radius: 50%;
+    animation: transform-container 3s;
+}
+
+.spiner-block{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: #61dafb;
+}
+
+.top{
+    left: 160px;
+    transform: skewX(75deg);
+    animation: transform-top 1s;
+    border-top-right-radius: 100%;
+}
+.left{
+    top: 80px;
+    animation: transform-left 1s;
+    transform: skewY(-75deg);
+    border-top-left-radius: 100%;
+}
+.center{
+    left: 160px;
+    border-radius: 50%;
+    animation: transform-center 1s;
+    transform: rotate(45deg);
+}
+.right{
+    left: 320px;
+    bottom: 80px;
+    animation: transform-right 1s;
+    transform: skewY(-75deg); 
+    border-bottom-right-radius: 100%;
+}
+.bottom{
+    left: 160px;
+    animation: transform-bottom 1s;
+    transform: skewX(-105deg);
+    border-bottom-left-radius: 100%;
+}
+
+
+@keyframes rotate {
+    from{ 
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    };
+}
+
+@keyframes transform-container {
+    from{ 
+        transform: rotate(0deg);
+        border-radius: 0%;
+        background-color: gray;
+    };
+    to{
+        transform: rotate(-45deg);
+        border-radius: 50%;
+        opacity: 0;
+        background-color: #fff;
+    };
+}
+
+@keyframes transform-center {
+    from{ 
+        transform: rotate(0deg);
+        border-radius: 0%;
+    };
+    to{
+        transform: rotate(45deg);
+        border-radius: 50%;
+    };
+}
+
+@keyframes transform-left {
+    from{ 
+        transform: skewY(0deg);
+        border-top-left-radius: 0%;
+    };
+    to{
+        transform: skewY(-75deg);
+        border-top-left-radius: 100%;
+    };
+}
+
+@keyframes transform-right {
+    from{ 
+        transform: skewY(0deg);
+        border-bottom-right-radius: 0%;
+    };
+    to{
+        transform: skewY(-75deg);
+        border-bottom-right-radius: 100%;
+    };
+}
+
+@keyframes transform-top {
+    from{ 
+        transform: skewY(0deg);
+        border-top-right-radius: 0%;
+    };
+    to{
+        transform: skewY(75deg);
+        border-top-right-radius: 100%;
+    };
+}
+
+@keyframes transform-bottom {
+    from{ 
+        transform: skewY(0deg);
+        border-bottom-left-radius: 100%;
+    };
+    to{
+        transform: skewY(-105deg);
+        border-bottom-left-radius: 100%;
+    };
+}

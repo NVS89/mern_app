@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './input.styl';
 
 export default function InputControl(props) {
@@ -17,3 +18,16 @@ export default function InputControl(props) {
         </div>
     );
 }
+
+InputControl.defaultProps = {
+    label: '',
+    labelClass: '',
+    containerClass: '',
+};
+
+InputControl.propTypes = {
+    type: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    labelClass: PropTypes.string,
+    containerClass: PropTypes.string,
+};

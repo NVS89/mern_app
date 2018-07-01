@@ -1,5 +1,6 @@
 import React from 'react';
 import './record.styl';
+import PropTypes from 'prop-types';
 import { Button } from '../Button';
 
 export default function Record(props) {
@@ -26,35 +27,34 @@ export default function Record(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {items.map((item) => {
-                        console.log('====================================')
-                        console.log(item.uid)
-                        console.log('====================================')
-                        return (
-                            <tr className="list-row" key={item.uid}>
-                                <td className="list-cell">
-                                    {item.firstName}
-                                </td>
-                                <td className="list-cell">
-                                    {item.lastName}
-                                </td>
-                                <td className="list-cell">
-                                    {item.phone}
-                                </td>
-                                <td className="list-cell">
-                                    {item.age}
-                                </td>
-                                <td>
-                                    <Button
-                                        className="delete"
-                                        onClick={() => handleDelete(item.uid)}
-                                    >
-                                        Delete user
-                                    </Button>
-                                </td>
-                            </tr>
-                        );
-                    })}
+                    {
+                        items.map((item) => {
+                            return (
+                                <tr className="list-row" key={item.uid}>
+                                    <td className="list-cell">
+                                        {item.firstName}
+                                    </td>
+                                    <td className="list-cell">
+                                        {item.lastName}
+                                    </td>
+                                    <td className="list-cell">
+                                        {item.phone}
+                                    </td>
+                                    <td className="list-cell">
+                                        {item.age}
+                                    </td>
+                                    <td>
+                                        <Button
+                                            className="delete"
+                                            onClick={() => handleDelete(item.uid)}
+                                        >
+                                            Delete user
+                                        </Button>
+                                    </td>
+                                </tr>
+                            );
+                        })
+                    }
                 </tbody>
             </table>
         );
@@ -68,3 +68,12 @@ export default function Record(props) {
 
     return record;
 }
+
+Button.defaultProps = {
+    items: [],
+};
+
+Button.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object),
+    handleDelete: PropTypes.func.isRequired,
+};
