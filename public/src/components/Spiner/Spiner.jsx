@@ -12,5 +12,5 @@ export default function Spiner() {
                 <div className="spiner-block bottom" />
             </div>
         </div>
-    )
+    );
 }

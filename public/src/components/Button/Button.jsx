@@ -28,6 +28,7 @@ Button.defaultProps = {
     className: '',
     form: '',
     children: {},
+    onClick: null,
     disabled: '',
 };
 
@@ -36,6 +37,6 @@ Button.propTypes = {
     className: PropTypes.string,
     form: PropTypes.string,
     children: PropTypes.node,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     disabled: PropTypes.bool,
 };
