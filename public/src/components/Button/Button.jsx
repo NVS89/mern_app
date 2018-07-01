@@ -4,7 +4,7 @@ import './button.styl';
 
 export default function Button(props) {
     const {
-        type = 'button',
+        type,
         className,
         form,
         children,
@@ -25,15 +25,16 @@ export default function Button(props) {
 }
 
 Button.defaultProps = {
+    type: 'button',
     className: '',
     form: '',
     children: {},
     onClick: null,
-    disabled: '',
+    disabled: false,
 };
 
 Button.propTypes = {
-    type: PropTypes.string.isRequired,
+    type: PropTypes.string,
     className: PropTypes.string,
     form: PropTypes.string,
     children: PropTypes.node,
