@@ -1,54 +1,55 @@
-"use strict";
 const PATHS = require('./config/webpack-path.js');
-const loaders = require('./config/webpack-loaders.js'); 
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const loaders = require('./config/webpack-loaders.js');
 
 const common = {
     entry: {
-        app: ['babel-polyfill', PATHS.src]
+        app: ['babel-polyfill', PATHS.src],
     },
     output: {
         path: PATHS.dist,
-        filename: '[name].js'
+        filename: '[name].js',
     },
     module: {
         rules: [
             loaders.stylus,
             loaders.babel,
             loaders.font,
-            loaders.svg
-        ]
+            loaders.svg,
+        ],
     },
     resolve: {
         extensions: [
             '.js',
-            '.jsx'
-        ]
-    }
+            '.jsx',
+        ],
+    },
 };
 
-let config = function (env, argv) {
+let config = function config(env, argv) {
+    let option = {};
+    let devServer;
+    let buildPlugin;
     switch (argv.mode) {
         case 'production':
-            let buildPlugin = loaders.buildPlugin();
-            return config = {
+            buildPlugin = loaders.buildPlugin();
+            option = {
                 ...common,
                 ...buildPlugin,
-                devtool: 'source-map'
+                devtool: 'source-map',
             };
-            break;
+            return option;
         case 'development':
-            let devServer = loaders.devServer({
-                port: 3000
+            devServer = loaders.devServer({
+                port: 3000,
             });
-            return config = {
+            option = {
                 ...common,
                 ...devServer,
-                devtool: 'eval-source-map'
+                devtool: 'eval-source-map',
             };
-            break;
+            return option;
         default:
-
+            break;
     }
 };
 
