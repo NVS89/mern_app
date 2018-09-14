@@ -52,7 +52,6 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "db_start": "..\\MongoDB\\bin\\mongod --dbpath=.\\db",
-    "docker_build": "docker build -t mern_app .",
-    "docker_run": "docker run --rm -it -p 8080:8080  mern_app:latest"
+    "docker_run": "docker-compose up --build"
   }
 }
