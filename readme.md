@@ -1,5 +1,9 @@
 # Simple example of MERN application
 
+## To start application with docker
+
+- docker-compose up --build
+
 ## To start node server with inspect mode
 
 - npm run api
